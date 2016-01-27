@@ -1,0 +1,83 @@
+/*all styles go here*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+html, body {
+    min-height:100%;
+    background: #d6d3d3;
+    min-width: 320px;
+    color: #333;
+}
+section {
+    padding: 20px;
+    border-bottom: 1px solid #333;
+}
+.clr {
+    clear: both;
+}
+.container {
+    min-height: 100%;
+    max-width: 1200px;
+    min-width: 320px;
+    margin: 0 auto;
+}
+.container .header h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.container .header h1,
+.container .header p,
+.container .header a{
+    text-align: center;
+}
+
+.flower {
+    width: 24%;
+    padding: 10px;
+    margin: 5px 0.5%;
+    background: #f5f2f2;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    float: left;
+}
+.flower.danger {
+    background: #fa6060;
+    -webkit-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+.flower .flower-pic {
+    background: url("../img/flower.png") no-repeat top center;
+    background-size: contain;
+    height: 100px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+/*=====================================================
+=            Bootstrap 2.3.2 Media Queries            =
+=====================================================*/
+@media only screen and (max-width : 1200px) {
+
+}
+
+@media only screen and (max-width : 979px) {
+
+}
+
+@media only screen and (max-width : 767px) {
+
+}
+
+@media only screen and (max-width : 480px) {
+
+}
+
+@media only screen and (max-width : 320px) {
+
+}
+
+
