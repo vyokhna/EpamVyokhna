@@ -1,83 +1,207 @@
 /*all styles go here*/
-
 * {
+    font-family: sans-serif;
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    font-family: sans-serif;
 }
+
 html, body {
-    min-height:100%;
-    background: #d6d3d3;
     min-width: 320px;
+    min-height: 100%;
     color: #333;
+    background: #d6d3d3;
 }
+
 section {
     padding: 20px;
     border-bottom: 1px solid #333;
 }
+
+h4 {
+    padding: 5px 0;
+}
+
 .clr {
     clear: both;
 }
+
 .container {
-    min-height: 100%;
-    max-width: 1200px;
+    position: relative;
     min-width: 320px;
+    max-width: 1200px;
+    min-height: 100%;
     margin: 0 auto;
 }
-.container .header h1 {
+
+#warning {
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    padding: 0;
+    -webkit-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    border-bottom: none;
+    background: #fff056;
+}
+
+#warning.shown {
+    height: 40px;
+    margin: 0 auto;
+    padding: 10px;
+    -webkit-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    border-bottom: 1px solid #333;
+}
+
+#warning p {
+    text-align: center;
+}
+
+.header {
+    padding-top: 20px;
+    -webkit-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+}
+
+.header.warning {
+    padding-top: 50px;
+    -webkit-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+}
+
+.header h1 {
     margin-bottom: 20px;
     text-align: center;
 }
-.container .header h1,
-.container .header p,
-.container .header a{
+
+.header h1,
+.header p,
+.header a {
     text-align: center;
 }
 
 .flower {
-    width: 24%;
+    float: left;
+    width: 23.5%;
+    margin: 10px 2% 10px 0;
     padding: 10px;
-    margin: 5px 0.5%;
-    background: #f5f2f2;
+    overflow: hidden;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
-    float: left;
+    background: #fdf3e7;
 }
+
+.flower .flower-name {
+    margin-top: 10px;
+    padding: 5px 0;
+    border-top: 1px solid #333;
+}
+
+.flower .flower-expiration {
+    padding: 5px 0;
+}
+
+.flower:nth-child(4n) {
+    margin-right: 0;
+}
+
+.flower.prepare {
+    -webkit-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    background: #fff056;
+}
+
 .flower.danger {
-    background: #fa6060;
-    -webkit-transition: all 0.5s ease-out;
-    transition: all 0.5s ease-out;
+    -webkit-transition: all .5s ease-out;
+    transition: all .5s ease-out;
+    background: #c63d0f;
 }
+
 .flower .flower-pic {
-    background: url("../img/flower.png") no-repeat top center;
-    background-size: contain;
-    height: 100px;
     width: 100%;
-    margin-bottom: 10px;
+    height: 100px;
+    background: url('../img/flower.png') no-repeat top center;
+    background-size: contain;
 }
+
+.form-label {
+    line-height: 16px;
+    display: inline-block;
+    width: 140px;
+    height: 20px;
+    margin-bottom: 5px;
+}
+
+button,
+input[type='submit'] {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    border: 1px solid #333;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    outline: none;
+    background: #74afad;
+}
+
+button:active,
+input[type='submit']:active {
+    background: #558c89;
+}
+
+input[type='text'],
+input[type='number'] {
+    width: 140px;
+    height: 20px;
+    padding: 0 5px;
+    text-align: right;
+    border: 1px solid #333;
+    outline: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
 /*=====================================================
 =            Bootstrap 2.3.2 Media Queries            =
 =====================================================*/
 @media only screen and (max-width : 1200px) {
-
 }
 
 @media only screen and (max-width : 979px) {
-
 }
 
 @media only screen and (max-width : 767px) {
+    .flower {
+        width: 46%;
+        margin: 10px 4% 10px 0;
+        padding: 10px;
+    }
 
+    .flower:nth-child(4n) {
+        margin: 10px 4% 10px 0;
+    }
+
+    .flower:nth-child(2n) {
+        margin: 10px 0 10px 4%;
+    }
 }
 
 @media only screen and (max-width : 480px) {
-
 }
 
 @media only screen and (max-width : 320px) {
-
 }
-
-

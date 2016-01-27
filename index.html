@@ -3,7 +3,9 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Water Me!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Orbitron:500' rel='stylesheet' type='text/css'>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
     <script type="text/javascript" src="js/controllers/mainCtrl.js"></script>
@@ -13,25 +15,31 @@
 </head>
 <body ng-controller="mainCtrl as vm">
 <div class="container">
-    <section class="header">
+    <section id="warning" ng-class="{shown: vm.warning()}">
+        <p>One or more flowers need watering!</p>
+    </section>
+    <section class="header" ng-class="{warning: vm.warning()}">
         <h1>HELLO!</h1>
         <p>Don't forget to water your flowers!</p>
     </section>
     <section class="main-section" ng-if="vm.flowersCollection.length>0">
-        <div class="flower" ng-class="{danger: flower.dead}" ng-repeat="flower in vm.flowersCollection">
+        <div class="flower" ng-class="{danger: flower.dead, prepare: vm.lastWatered(flower)}" ng-repeat="flower in vm.flowersCollection">
             <div class="flower-pic"></div>
             <p class="flower-name">{{flower.flowerName}}</p>
-            <p class="flower-expiration">Deadline: <span countdown>00:00:00</span></p>
-            <button class="flower-water" ng-click="vm.waterFlower(flower.created)">Water Me!</button>
-            <button class="flower-delete"  ng-click="vm.deleteOneFlower(flower.created)">Delete Me, I'm Dead =(</button>
+            <p class="flower-expiration">Deadline:<br/><span countdown>00:00:00</span></p>
+            <button class="flower-water" ng-if="!flower.dead" ng-click="vm.waterFlower(flower.created)">Water Me</button>
+            <button class="flower-delete" ng-if="flower.dead" ng-click="vm.deleteOneFlower(flower.created)">Remove Me</button>
         </div>
         <div class="clr"></div>
     </section>
     <section class="flower-add">
-        <h4>Add new flower:</h4>
+        <h4>Please, water your new flower and add it to the list:</h4>
         <form ng-submit="vm.addFlower()">
-            <label for="flowerName">Flower Name: </label><input ng-model='vm.newFlower.flowerName' type="text" required id="flowerName"/><br/>
-            <label for="waterHours">Water every: </label><input ng-model='vm.newFlower.waterDays' type="number" placeholder="DDD" maxlength="3" required id="waterDays"/><span> days, </span><input ng-model='vm.newFlower.waterHours' type="number" placeholder="HH" maxlength="2" required value="00" id="waterHours"/><span> hours, </span><input ng-model='vm.newFlower.waterMinutes' type="number" id="waterMinutes" required placeholder="MM" maxlength="2"/><span> minutes.</span><br/>
+            <label for="flowerName" class="form-label">Flower Name: </label><input ng-model='vm.newFlower.flowerName' type="text" required id="flowerName"/><br/>
+            <h4>Water every:</h4>
+            <label for="waterDays"    class="form-label">Days: </label><input ng-model='vm.newFlower.waterDays' type="number" placeholder="DDD" min="0" max="365" ng-maxlength="3" required id="waterDays"/><br>
+            <label for="waterHours"   class="form-label">Hours: </label><input ng-model='vm.newFlower.waterHours' type="number" placeholder="HH" min="0" max="24" ng-maxlength="2" required id="waterHours"/><br>
+            <label for="waterMinutes" class="form-label">Minutes: </label><input ng-model='vm.newFlower.waterMinutes' type="number" placeholder="MM" min="5" max="60" ng-maxlength="2" required id="waterMinutes" /><br/>
             <input type="submit" value="Add Flower"/>
         </form>
     </section>

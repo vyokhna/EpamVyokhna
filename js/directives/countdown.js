@@ -13,15 +13,16 @@ flowerApp.directive('countdown', ['$interval', function ($interval) {
                         var s = diff % 60;
                         return d + "d:" + h + "h:" + m + "m:" + s + "s";
                     }
-                    if(diff <= 0){
-                        stopTimer();
-                        element.text('X__X');
+                    if(diff < 0){
+                        element.text("I'm dead");
                         scope.flower.dead = true;
-                        console.log(scope.flower)
+                        stopTimer();
                     }else{
                         element.text(formattedDate());
                     }
-                }
+                };
+
+                // we invoke this function not to have a 1 second delay after page loads
                 intFun();
                 var int = $interval(intFun, 1000);
 

@@ -36,6 +36,4 @@ flowerApp.service('storageService', [function () {
             return angular.fromJson(localStorage.flowersCollection);
         }
     };
-
-
 }]);
