@@ -19,7 +19,7 @@ flowerApp.controller('mainCtrl', ['storageService', function(storageService){
 
         vm.newFlower = undefined;
         vm.flowersCollection.push(flower);
-        storageService.addOneFlower(flower);
+        storageService.setFlowersCollection(vm.flowersCollection);
     };
 
     vm.waterFlower = function(created){
@@ -27,17 +27,17 @@ flowerApp.controller('mainCtrl', ['storageService', function(storageService){
             if(el.created == created){
                 el.lastWatered = new Date().getTime();
                 el.waterDeadline = (new Date().getTime() + el.waterMilliSeconds);
-                storageService.updateOneFlower(el);
             }
         });
+        storageService.setFlowersCollection(vm.flowersCollection);
     };
 
     vm.deleteOneFlower = function(created){
         vm.flowersCollection.forEach(function(el, index){
             if(el.created == created){
                 vm.flowersCollection.splice(index, 1);
-                storageService.deleteOneFlower(created);
             }
+            storageService.setFlowersCollection(vm.flowersCollection);
         });
     };
 
