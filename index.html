@@ -37,9 +37,9 @@
         <form ng-submit="vm.addFlower()">
             <label for="flowerName" class="form-label">Flower Name: </label><input ng-model='vm.newFlower.flowerName' type="text" required id="flowerName"/><br/>
             <h4>Water every:</h4>
-            <label for="waterDays"    class="form-label">Days: </label><input ng-model='vm.newFlower.waterDays' type="number" placeholder="DDD" min="0" max="365" ng-maxlength="3" required id="waterDays"/><br>
-            <label for="waterHours"   class="form-label">Hours: </label><input ng-model='vm.newFlower.waterHours' type="number" placeholder="HH" min="0" max="24" ng-maxlength="2" required id="waterHours"/><br>
-            <label for="waterMinutes" class="form-label">Minutes: </label><input ng-model='vm.newFlower.waterMinutes' type="number" placeholder="MM" min="5" max="60" ng-maxlength="2" required id="waterMinutes" /><br/>
+            <label for="waterDays"    class="form-label">Days <span class="small-span">(0-365)</span>: </label><input ng-model='vm.newFlower.waterDays' type="number" placeholder="DDD" min="0" max="365" ng-maxlength="3" required id="waterDays" ng-change="vm.updateMinMinutes()"/><br>
+            <label for="waterHours"   class="form-label">Hours <span class="small-span">(0-24)</span>: </label><input ng-model='vm.newFlower.waterHours' type="number" placeholder="HH" min="0" max="24" ng-maxlength="2" required id="waterHours" ng-change="vm.updateMinMinutes()"/><br>
+            <label for="waterMinutes" class="form-label">Minutes <span class="small-span">({{vm.minMinutes}}-60)</span>: </label><input ng-model='vm.newFlower.waterMinutes' type="number" placeholder="MM" min="{{vm.minMinutes}}" max="60" ng-maxlength="2" required id="waterMinutes" /><br/>
             <input type="submit" value="Add Flower"/>
         </form>
     </section>

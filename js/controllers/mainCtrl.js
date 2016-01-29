@@ -4,6 +4,17 @@ flowerApp.controller('mainCtrl', ['storageService', function(storageService){
 
     vm.flowersCollection = storageService.getFlowersCollection() || [];
 
+    vm.minMinutes = 5;
+
+    // we update minimum minutes count depending on entered days and hours values
+    vm.updateMinMinutes = function(){
+        if(vm.newFlower.waterDays || +vm.newFlower.waterDays > 0 || vm.newFlower.waterHours || +vm.newFlower.waterHours > 0){
+            vm.minMinutes = 0;
+        }else{
+            vm.minMinutes = 5;
+        }
+    };
+
     vm.addFlower = function(){
         
         // we calculate how many milliseconds we have before our flower dies
